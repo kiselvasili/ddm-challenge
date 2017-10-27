@@ -1,1 +1,35 @@
-<div>give consent</div>
+<mat-toolbar>Give consent</mat-toolbar>
+
+ <form [formGroup]="consentForm"
+      (ngSubmit)="onSubmit(consentForm)">
+
+    <mat-form-field>
+        <input matInput placeholder="Name"
+               formControlName="userName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Email"
+               formControlName="userEmail">
+    </mat-form-field>
+        
+    <div formGroupName="options">
+        <div>
+            <mat-checkbox formControlName="oneCheck">Receive newsletter</mat-checkbox>
+        </div>
+        <div>
+            <mat-checkbox formControlName="twoCheck">Be shown targeted ads</mat-checkbox>
+        </div>
+        <div>
+            <mat-checkbox formControlName="threeCheck">Contribute to anonymous visit statistics</mat-checkbox>
+        </div>
+    </div>
+        
+    <div>
+        <button class="form-button" 
+                mat-raised-button
+                [disabled]="false">Agree</button>
+    </div>
+    
+</form> 
+

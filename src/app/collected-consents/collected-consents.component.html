@@ -1,1 +1,30 @@
-<div>collected consents</div>
+<mat-toolbar>Collected consents</mat-toolbar>
+
+<div *ngIf="dataSource" class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+     <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container> 
+
+    <ng-container matColumnDef="Consent">
+      <mat-header-cell *matHeaderCellDef> Consent </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <div>{{element.options.oneCheck}}</div>
+          <div>{{element.options.twoCheck}}</div>
+          <div>{{element.options.threeCheck}}</div>
+      </mat-cell>
+    </ng-container>
+
+     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
+  </mat-table>
+</div>
