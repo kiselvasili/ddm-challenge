@@ -1,0 +1,19 @@
+.container {
+    margin-top: 40px;
+}
+
+.pagination li {
+    border: 1px black solid;
+}
+
+.pagination .pagination-btn {
+    min-width: 1%
+}
+
+.mat-button-focus-overlay {
+    background-color:transparent;
+}
+
+.disabled {
+    cursor: not-allowed;
+}

@@ -1,7 +1,10 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Http } from '@angular/http';
 
 import { ConsentsService } from './services/consents.service';
+import { PagerService } from './services/pager.service';
+import { ExtendedHttpService } from '../http/mock-http';
 
 @NgModule({
     imports: [
@@ -10,7 +13,10 @@ import { ConsentsService } from './services/consents.service';
     declarations: [],
     exports: [],
     providers: [
-        ConsentsService
+        ConsentsService,
+        PagerService,
+        ExtendedHttpService,
+        { provide: Http, useClass: ExtendedHttpService }
     ]
 })
 export class CoreModule {

@@ -1,15 +1,15 @@
 <nav>
     <ul>
-        <li>
-            <button mat-button>
-                <a [routerLink]="['give-consent']">give consent</a>
-            </button>
+        <li class="nav-item"
+            [routerLinkActive]="['link-active']">
+            <a class="link"
+               [routerLink]="['give-consent']">Give consent</a>
             
         </li>
-        <li>
-            <button mat-button>
-                <a [routerLink]="['collected-consents']">collected consents</a>
-            </button>
+        <li class="nav-item"
+            [routerLinkActive]="['link-active']">
+            <a class="link"
+               [routerLink]="['collected-consents']">Collected consents</a>
         </li>
     </ul>
 </nav>
