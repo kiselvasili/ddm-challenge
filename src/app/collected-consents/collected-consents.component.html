@@ -16,9 +16,6 @@
     <ng-container matColumnDef="Consent">
       <mat-header-cell *matHeaderCellDef> Consent </mat-header-cell>
       <mat-cell *matCellDef="let element">
-          <!-- <div>{{element.options.oneCheck}}</div>
-          <div>{{element.options.twoCheck}}</div>
-          <div>{{element.options.threeCheck}}</div> -->
            <div *ngFor="let item of fitlerOption(element.options)">
               {{item}}
           </div> 

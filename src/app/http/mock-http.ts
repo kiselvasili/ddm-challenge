@@ -18,7 +18,6 @@ export class ExtendedHttpService extends Http {
         this.consents = [...consents];
         this.consentsLength = consents.length; 
         this.limit = 3;
-        console.log('consents', this.consents)
     }
 
     public get<T>(url: string, options?: any): Observable<T> {
@@ -44,6 +43,7 @@ export class ExtendedHttpService extends Http {
         } else {
             this.consents = [...this.consents, <Consent>consent];
         }
+        this.consentsLength = this.consents.length;
 
         return Observable.of(<any>new CustomResponse(JSON.stringify({})));
     }

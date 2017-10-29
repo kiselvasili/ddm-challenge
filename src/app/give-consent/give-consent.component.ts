@@ -25,7 +25,7 @@ export class GiveConsentComponent implements OnInit {
                 'oneCheck': false,
                 'twoCheck': false,
                 'threeCheck': false
-            }, {validator: false})
+            }, { validator: this.validForm })
         });
     }
 
@@ -36,8 +36,9 @@ export class GiveConsentComponent implements OnInit {
             });
     }
 
-    public validForm(): void {
-
+    public validForm(options: FormGroup) {
+        const validator = _.some(options.controls, { value: true });
+        return validator ? null : { 'unchecked': true };
     }
 
 }

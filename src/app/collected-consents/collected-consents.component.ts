@@ -30,7 +30,6 @@ export class CollectedConsentsComponent implements OnInit  {
 
     public ngOnInit() {
         this.setPage(1);
-        console.log(this.consentsOption);
     }
 
     public setPage(page: number) {
@@ -48,8 +47,13 @@ export class CollectedConsentsComponent implements OnInit  {
     }
 
     public fitlerOption(options) {
-    
-        return [1,2,3];
+        let data = [];
+        _.forEach(this.consentsOption, (value, key) => {
+            if (options[key]) {
+                data.push(value);
+            }
+        });
+        return data;
     }
 
 }
