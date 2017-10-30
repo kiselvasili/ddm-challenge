@@ -20,7 +20,7 @@ export class GiveConsentComponent implements OnInit {
     public ngOnInit(): void {
         this.consentForm = this._fb.group({
             'name': ['', Validators.required],
-            'email': ['', Validators.required],
+            'email': ['', Validators.email],
             'options': this._fb.group({
                 'oneCheck': false,
                 'twoCheck': false,
