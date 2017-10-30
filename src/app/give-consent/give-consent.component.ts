@@ -29,7 +29,7 @@ export class GiveConsentComponent implements OnInit {
         });
     }
 
-    public onSubmit(consentsForm: FormGroup): void {
+    public onSubmit(): void {
         this.consentService.addConsent(this.consentForm)
             .subscribe(() => {
                 this.router.navigate(['/collected-consents']);

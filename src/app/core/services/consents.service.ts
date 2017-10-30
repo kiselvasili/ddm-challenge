@@ -16,7 +16,6 @@ export class ConsentsService {
     }
 
     public addConsent(consent) {
-        console.log(consent.value);
         const body = JSON.stringify(consent.value);
         return this._http.post(`/constants`, body)
             .map((response: Response) => response.json());
