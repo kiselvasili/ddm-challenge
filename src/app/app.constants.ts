@@ -3,3 +3,5 @@ export const consentsOption = {
     twoCheck: 'Be shown targeted ads',
     threeCheck: 'Contribute to anonymous visit statistics'
 };
+
+export const limitPagination = 6;

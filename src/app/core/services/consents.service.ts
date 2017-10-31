@@ -11,8 +11,8 @@ export class ConsentsService {
     private url: string = `/constants`;
     constructor(private _http: Http) {}
 
-    public getConsents(page: number) {
-        return this._http.get(this.url, {search: JSON.stringify({page})})
+    public getConsents(dataRequest: any) {
+        return this._http.get(this.url, {search: JSON.stringify(dataRequest)})
             .map((response: Response) => response.json());
     }
 

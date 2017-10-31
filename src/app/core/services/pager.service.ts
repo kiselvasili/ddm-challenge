@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 export class PagerService {
-    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 3) {
+    getPager(totalItems: number, currentPage: number = 1, pageSize: number) {
         let totalPages = Math.ceil(totalItems / pageSize);
 
         let startPage: number, endPage: number;

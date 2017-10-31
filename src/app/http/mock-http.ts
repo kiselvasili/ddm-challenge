@@ -17,16 +17,17 @@ export class ExtendedHttpService extends Http {
         super(null, null);
         this.consents = [...consents];
         this.consentsLength = consents.length; 
-        this.limit = 3;
     }
 
     public get<T>(url: string, options?: any): Observable<T> {
         if (!options) {
             return;
         }
-        const page = JSON.parse(options.search).page - 1;
-        const shift = page * this.limit;
-        const consents = _.slice(this.consents, shift, shift + this.limit)
+        let data = JSON.parse(options.search);
+        const page = data.page - 1;
+        const limit = data.limit;
+        const shift = page * limit;
+        const consents = _.slice(this.consents, shift, shift + limit)
         const jsonData = {
             consentsLength: this.consentsLength,
             consents

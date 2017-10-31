@@ -6,6 +6,7 @@ import { ExampleDataSource } from '../common/DataSourse';
 import { ConsentsService } from '../core/services/consents.service';
 import { PagerService } from '../core/services/pager.service';
 import { consentsOption } from '../app.constants';
+import { limitPagination } from '../app.constants';
 
 import * as _ from 'lodash';
 
@@ -21,6 +22,7 @@ export class CollectedConsentsComponent implements OnInit  {
     public pageItems: any[];
     public totalLength: number;
     public consentsOption: any = consentsOption;
+    public limit: number = limitPagination;
 
     constructor(private consentService: ConsentsService,
                 private pagerService: PagerService){
@@ -31,20 +33,23 @@ export class CollectedConsentsComponent implements OnInit  {
     }
 
     public setPage(page: number): void {
-        this.consentService.getConsents(page)
+        let dataRequest = {
+            page,
+            limit: this.limit
+        };
+        this.consentService.getConsents(dataRequest)
             .subscribe(data => {
                 if(!data) {
                     return;
                 }
                 this.totalLength = data.consentsLength;
                 this.dataSource = new ExampleDataSource(data.consents);
-                
             });
         if (page < 1 || page > this.pager.totalPages) {
             return;
         }
 
-        this.pager = this.pagerService.getPager(this.totalLength, page);
+        this.pager = this.pagerService.getPager(this.totalLength, page, this.limit);
     }
 
     public fitlerOption(options): Array<string> {
