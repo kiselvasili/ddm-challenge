@@ -17,7 +17,7 @@ describe('Collected connsents component', () => {
     let app;
     let consentService;
     let spyGetConsents;
-    let consents = consentsMockData;
+    const consents = consentsMockData;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

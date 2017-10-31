@@ -21,20 +21,11 @@ export class PagerService {
             }
         }
 
-        let startIndex = (currentPage - 1) * pageSize;
-        let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-
         let pages = _.range(startPage, endPage + 1);
 
         return {
-            totalItems: totalItems,
             currentPage: currentPage,
-            pageSize: pageSize,
             totalPages: totalPages,
-            startPage: startPage,
-            endPage: endPage,
-            startIndex: startIndex,
-            endIndex: endIndex,
             pages: pages
         };
     }

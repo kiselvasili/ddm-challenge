@@ -16,10 +16,9 @@ import * as _ from 'lodash';
     styleUrls: ['./collected-consents.component.scss']
 })
 export class CollectedConsentsComponent implements OnInit  {
-    public dataSource;
+    public dataSource: ExampleDataSource;
     public displayedColumns = ['Name', 'Email', 'Consent'];
     public pager: any = {};
-    public pageItems: any[];
     public totalLength: number;
     public consentsOption: any = consentsOption;
     public limit: number = limitPagination;
