@@ -36,7 +36,7 @@ export class GiveConsentComponent implements OnInit {
             });
     }
 
-    public validForm(options: FormGroup) {
+    public validForm(options: FormGroup): Validators {
         const validator = _.some(options.controls, { value: true });
         return validator ? null : { 'unchecked': true };
     }

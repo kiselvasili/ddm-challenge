@@ -26,15 +26,16 @@ export class CollectedConsentsComponent implements OnInit  {
                 private pagerService: PagerService){
     }
 
-    
-
     public ngOnInit() {
         this.setPage(1);
     }
 
-    public setPage(page: number) {
+    public setPage(page: number): void {
         this.consentService.getConsents(page)
             .subscribe(data => {
+                if(!data) {
+                    return;
+                }
                 this.totalLength = data.consentsLength;
                 this.dataSource = new ExampleDataSource(data.consents);
                 
@@ -46,7 +47,7 @@ export class CollectedConsentsComponent implements OnInit  {
         this.pager = this.pagerService.getPager(this.totalLength, page);
     }
 
-    public fitlerOption(options) {
+    public fitlerOption(options): Array<string> {
         let data = [];
         _.forEach(this.consentsOption, (value, key) => {
             if (options[key]) {

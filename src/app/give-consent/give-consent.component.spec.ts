@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '../common/shared.module';
 import { ConsentsService } from '../core/services/consents.service';
@@ -8,6 +9,8 @@ import { ConsentMockService } from '../testing/ConsentMockService';
 import { PagerService } from '../core/services/pager.service';
 import { PagerMockService } from '../testing/PagerMockService';
 import { GiveConsentComponent } from './give-consent.component';
+
+import '../../config/vendor';
 
 describe('Collected connsents component', () => {
     let fixture;
@@ -19,7 +22,8 @@ describe('Collected connsents component', () => {
         TestBed.configureTestingModule({
         imports: [
             SharedModule,
-            RouterTestingModule
+            RouterTestingModule,
+            BrowserAnimationsModule
         ],
         declarations: [
             GiveConsentComponent
@@ -60,7 +64,7 @@ describe('Collected connsents component', () => {
                 threeCheck: false
             }
         };
-        app.ngOnInit();
+        fixture.detectChanges();
         app.consentForm.setValue(fakeData);
         app.onSubmit();
         tick();

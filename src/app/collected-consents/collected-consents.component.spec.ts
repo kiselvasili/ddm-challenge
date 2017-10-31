@@ -9,6 +9,7 @@ import { PagerService } from '../core/services/pager.service';
 import { PagerMockService } from '../testing/PagerMockService';
 import { CollectedConsentsComponent } from './collected-consents.component';
 import { ExampleDataSource } from '../common/DataSourse';
+import { consentsMockData } from '../testing/fixture';
 
 describe('Collected connsents component', () => {
 
@@ -16,14 +17,7 @@ describe('Collected connsents component', () => {
     let app;
     let consentService;
     let spyGetConsents;
-    let consents = {
-        consentsLength: 6,
-        consents: [
-            { name: 'vasili', email: 'vasili@mail.ru', options: { oneCheck: true, twoCheck: false, threeCheck: true } },
-            { name: 'ura', email: 'ura@mail.ru', options: { oneCheck: true, twoCheck: true, threeCheck: true } },
-            { name: 'kostya', email: 'kostya@mail.ru', options: { oneCheck: false, twoCheck: false, threeCheck: true } }
-        ]
-    };
+    let consents = consentsMockData;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

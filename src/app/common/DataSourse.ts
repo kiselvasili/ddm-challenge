@@ -1,10 +1,11 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import { ConsentsService } from '../core/services/consents.service';
-import 'rxjs/add/observable/of';
+
+import { Consent } from '../interfaces/consent.interface';
 
 export class ExampleDataSource extends DataSource<any> {
-    constructor(private data: any){
+    constructor(private data: Array<Consent>){
         super();
     }
     

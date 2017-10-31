@@ -21,31 +21,29 @@ export class ExtendedHttpService extends Http {
     }
 
     public get<T>(url: string, options?: any): Observable<T> {
+        if (!options) {
+            return;
+        }
         const page = JSON.parse(options.search).page - 1;
         const shift = page * this.limit;
         const consents = _.slice(this.consents, shift, shift + this.limit)
-        const jsonData = JSON.stringify({
+        const jsonData = {
             consentsLength: this.consentsLength,
             consents
-        });
+        };
         return Observable.of(<any>new CustomResponse(jsonData));
     }
 
-    public post<T>(url: string, body, options?: any): Observable<T> {
+    public post<T>(url: string, body): Observable<T> {
         const consent = JSON.parse(body);
 
         if (!(consent && typeof consent === 'object')) {
             return Observable.throw('Error');
         }
-
-        if (Array.isArray(consent)) {
-            this.consents = [...this.consents, ...(<Array<Consent>>consent)];
-        } else {
-            this.consents = [...this.consents, <Consent>consent];
-        }
+        this.consents = [...this.consents, <Consent>consent];
         this.consentsLength = this.consents.length;
 
-        return Observable.of(<any>new CustomResponse(JSON.stringify({})));
+        return Observable.of(<any>new CustomResponse({}));
     }
 }
 
@@ -55,6 +53,6 @@ class CustomResponse extends Response {
     }
 
     json() {
-        return JSON.parse(this.data);
+        return this.data;
     }
 }
