@@ -10,8 +10,6 @@ import { PagerService } from '../core/services/pager.service';
 import { PagerMockService } from '../testing/PagerMockService';
 import { GiveConsentComponent } from './give-consent.component';
 
-import '../../config/vendor';
-
 describe('Collected connsents component', () => {
     let fixture;
     let app;
